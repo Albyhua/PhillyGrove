@@ -1,5 +1,6 @@
-const User = require('./User');
-const Event = require('./event')
+const User = require("./User");
+const Event = require("./event");
+
 
 User.belongsToMany(Event);
 Event.belongsToMany(User);
