@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Client-Side Templating Example</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script id="detail-template" type="text/x-handlebars-template">
+      <h2>Try <a href="?145888">145888</a></h2>
+      <h2>ID: {{federal_provider_number}}</h2>
+      <h2>{{provider_name}}</h2>
+      <h3>{{provider_city}}, {{provider_state}}</h3>
+    </script>
+  </body>
+  <script type="text/javascript">
+  $(document).ready(function() {
+ 
+    var provider_id = window.location.search.replace(/^\?/, "");
+
+    var query_string = 
+    $.ajax({
+        url: query_string,
+        dataType: "json",
+        success: function(response) {
+          handleQuery(response);
+        }
+    });
+
+    function handleQuery(response) {
+      provider = response[0];
+
+      var template = $('#detail-template').html();
+      var compiledTemplate = Handlebars.compile(template);
+      var result = compiledTemplate(provider);
+      $('#content').html(result);
+    }
+  });
+  </script>
+</html>
