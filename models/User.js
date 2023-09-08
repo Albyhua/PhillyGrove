@@ -35,6 +35,13 @@ User.init(
         len: [8],
       },
     },
+    event_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'event',
+        key: 'id'
+      }
+    }
   },
   {
     hooks: {
