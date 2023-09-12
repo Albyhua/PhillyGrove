@@ -1,30 +1,30 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Post, User, Comment } = require("../models");
-
-router.get("/", (req, res) => {
-  Post.findAll({
-    attributes: ["id", "title", "location", "date", "description"],
-    include: [
-      {
-        model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
-      },
-      {
-        mode: User,
-        attributes: ["username"],
-      },
-    ],
+const { Event, User, Comment } = require("../models");
+// base url localhost:3001/
+router.get("/", async(req, res) => {
+  const dbPostData =await Event.findAll({
+    attributes: ["id", "title", "location", "date", "date_created","description"],
+    // include: [
+      // {
+      //   model: Comment,
+      //   attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+      //   include: {
+      //     model: User,
+      //     attributes: ["username"],
+      //   },
+      // },
+    //   {
+    //     mode: User,
+    //     attributes: ["username"],
+    //   },
+    // ],
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
       res.render("homepage", {
         posts,
-        loggedIn: req.session.loggedIn,
+        // loggedIn: req.session.loggedIn,
       });
     })
     .catch((err) => {
@@ -76,7 +76,7 @@ router.get("/login", (req, res) => {
     res.redirect("/");
     return;
   }
-  res.render("login");
+  res.render("login", {layout: "main"});
 });
 
 router.get("/signup", (req, res) => {

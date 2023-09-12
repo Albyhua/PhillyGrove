@@ -21,11 +21,11 @@ const sess = {
   }),
 };
 
-app.use('/',(req,res,next)=>{
-  if(!req.session.loggedIn) {
-    res.redirect('/login')
-  }else next()
-});
+// app.use('/',(req,res,next)=>{
+//   if(!req.session.loggedIn) {
+//     res.redirect('/login')
+//   }else next()
+// });
 
 app.use(session(sess));
 
