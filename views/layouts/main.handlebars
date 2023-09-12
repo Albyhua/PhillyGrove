@@ -1,41 +1,41 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Community Events</title>
-    <!-- Include Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/css/style.css" />
+    <title>Client-Side Templating Example</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
   </head>
   <body>
-    <div class="container">
-      <h1>Community Events</h1>
-      {{#each events}}
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title">{{this.title}}</h5>
-            <p class="card-text"><strong>Location:</strong>
-              {{this.location}}</p>
-            <p class="card-text"><strong>Date:</strong> {{this.date}}</p>
-            <p class="card-text"><strong>Created On:</strong>
-              {{this.date_created}}</p>
-            <p class="card-text"><strong>Description:</strong>
-              {{this.description}}</p>
-            <p class="card-text"><strong>Organized by:</strong>
-              User
-              {{this.user_id}}</p>
-          </div>
-        </div>
-      {{/each}}
-    </div>
-
-    <!-- Include Bootstrap JS and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
-    ></script>
+    <div id="content"></div>
+    <script id="detail-template" type="text/x-handlebars-template">
+      <h2>Try <a href="?145888">145888</a></h2>
+      <h2>ID: {{federal_provider_number}}</h2>
+      <h2>{{provider_name}}</h2>
+      <h3>{{provider_city}}, {{provider_state}}</h3>
+    </script>
   </body>
+  <script type="text/javascript">
+  $(document).ready(function() {
+ 
+    var provider_id = window.location.search.replace(/^\?/, "");
+
+    var query_string = 
+    $.ajax({
+        url: query_string,
+        dataType: "json",
+        success: function(response) {
+          handleQuery(response);
+        }
+    });
+
+    function handleQuery(response) {
+      provider = response[0];
+
+      var template = $('#detail-template').html();
+      var compiledTemplate = Handlebars.compile(template);
+      var result = compiledTemplate(provider);
+      $('#content').html(result);
+    }
+  });
+  </script>
 </html>
