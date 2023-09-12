@@ -20,8 +20,14 @@ Event.init(
             allowNull: false,
           },
           date: {
-            type:DATETIME,
+            type:DataTypes.DATE,
             allowNull:false,
+          },
+          date_created: {
+            type:DataTypes.DATE,
+            allowNull:false,
+            defaultValue:DataTypes.NOW
+
           },
           description: {
             type:DataTypes.STRING,
@@ -32,13 +38,15 @@ Event.init(
             references: {
               model: 'user',
               key: 'id'
-          },
+          }
+        }},
           {
           sequelize,
           freezeTableName: true,
           underscored: true,
           modelName: "event",
           }
+        
       );
 
 module.exports = Event;
