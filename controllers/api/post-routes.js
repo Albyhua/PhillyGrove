@@ -64,6 +64,42 @@ router.get("/:id", (req, res) => {
     });
 });
 
+//Get all posts by a user
+router.get("/user/:user_id", (req, res) => {
+  Post.findAll({
+    where: {
+      user_id: req.params.user_id,
+    },
+    attributes: ["id", "title", "location", "date", "description"],
+    order: [["date", "DESC"]],
+    include: [
+      {
+        model: User,
+        attributes: ["username"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+    ],
+  })
+    .then((dbPostData) => {
+      if (dbPostData.length === 0) {
+        res.status(404).json({ message: "No events found for this user" });
+        return;
+      }
+      res.json(dbPostData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 // Create a post
 router.post("/", withAuth, (req, res) => {
   Post.create({
