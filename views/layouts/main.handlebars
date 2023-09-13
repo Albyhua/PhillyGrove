@@ -1,41 +1,37 @@
-<html>
+<!DOCTYPE html>
 
-<head>
-  <title>Client-Side Templating Example</title>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-  <link href="/css/output.css" rel="stylesheet">
-</head>
-
-<body>
-  <h1 class="text-3xl font-bold underline slate-400">
-    Hello world!
-  </h1>
-  <div id="content">
-    {{{body}}}
+<html lang-"en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhillyGrove</title>
+   </head>
+  <body>
+   <div>
+    <header>
+      <h1>
+        PhillyGrove
+      </h1>
+      <nav>
+       {{#if logged_in}}
+        <a href="/dasboard">Dashboard</a> 
+        <button id="logout">logout</button>
+        {{else}}
+        <a href="/login">login</a>
+        {{/if}}
+      </nav>
+    </header>
+    <main>
+      {{{ body }}}
+    </main>
+    <footer>
+      
+    </footer>
   </div>
-  <script id="detail-template" type="text/x-handlebars-template">
-      <h2>Try <a href="?145888">145888</a></h2> <h2>ID:
-      {{federal_provider_number}}</h2> <h2>{{provider_name}}</h2> <h3>{{provider_city}},
-      {{provider_state}}</h3>
-    </script>
-</body>
-<script type="text/javascript">
-  $(document).ready(function () {
-    var provider_id =
-      window.location.search.replace(/^\?/, ""); var query_string = $.ajax({
-        url:
-          query_string, dataType: "json", success: function (response) {
-            handleQuery(response);
-          }
-      }); function handleQuery(response) {
-        provider =
-          response[0]; var template = $('#detail-template').html(); var
-            compiledTemplate = Handlebars.compile(template); var result =
-              compiledTemplate(provider); $('#content').html(result);
-      }
-  });
-</script>
 
-</html>
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+  </body>
+  
+</html> 
