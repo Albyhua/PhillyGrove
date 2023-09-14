@@ -1,12 +1,13 @@
-<section class="full-event">
-  {{#each event}}
-    <div class="event-card">
-      <div class="event-header">
-        <h3><a href="/event/{{id}}">{{title}}</a></h3>
-        <div>posted by: {{User.username}}</div>
-        <div>Date of event: {{event.date}}</div>
-      </div>
-      <div class="event-body">{{description}}</div>
-    </div>
-  {{/each}}
-</section>
+<h2>Events:</h2>
+{{#each events as |event|}}
+<div>
+  <div>
+    <h2>
+      <a href="/event/{{event.id}}">{{event.title}}</a>
+    </h2>
+    <p>
+      Created by {{event.user.name}}
+    </p>
+  </div>
+</div>
+{{/each}}
