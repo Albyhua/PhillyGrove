@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 
 <html lang-"en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhillyGrove</title>
-   </head>
-  <body>
-   <div>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhillyGrove</title>
+</head>
+
+<body>
+  <div>
     <header>
       <h1>
         PhillyGrove
       </h1>
       <nav>
-       {{#if logged_in}}
-        <a href="/dasboard">Dashboard</a> 
+        {{#if logged_in}}
+        <a href="/dasboard">Dashboard</a>
         <button id="logout">logout</button>
         {{else}}
         <a href="/login">login</a>
@@ -25,13 +27,13 @@
       {{{ body }}}
     </main>
     <footer>
-      
+
     </footer>
   </div>
 
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
-  </body>
-  
-</html> 
+</body>
+
+</html>
