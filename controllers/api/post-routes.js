@@ -4,20 +4,20 @@ const withAuth = require("../../utils/auth");
 
 // Get all posts
 router.get("/", (req, res) => {
-  Event.findAll({
+  Post.findAll({
     attributes: ["id", "title", "location", "date", "description"],
     order: [["date", "DESC"]],
     include: [
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["name"],
       },
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ["name"],
         },
       },
     ],
@@ -39,14 +39,14 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["name"],
       },
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ["name"],
         },
       },
     ],
@@ -66,7 +66,7 @@ router.get("/:id", (req, res) => {
 
 //Get all posts by a user
 router.get("/user/:user_id", (req, res) => {
-  Event.findAll({
+  Post.findAll({
     where: {
       user_id: req.params.user_id,
     },
@@ -75,14 +75,14 @@ router.get("/user/:user_id", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["name"],
       },
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ["name"],
         },
       },
     ],
