@@ -1,23 +1,23 @@
 const router = require("express").Router();
-const { Post, User, Comment } = require("../../models");
+const { Event, User, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // Get all posts
 router.get("/", (req, res) => {
-  Post.findAll({
+  Event.findAll({
     attributes: ["id", "title", "location", "date", "description"],
     order: [["date", "DESC"]],
     include: [
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["name"],
       },
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ["name"],
         },
       },
     ],
@@ -31,7 +31,7 @@ router.get("/", (req, res) => {
 
 // Get a single post
 router.get("/:id", (req, res) => {
-  Post.findOne({
+  Event.findOne({
     where: {
       id: req.params.id,
     },
@@ -39,14 +39,14 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["name"],
       },
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ["name"],
         },
       },
     ],
@@ -65,8 +65,8 @@ router.get("/:id", (req, res) => {
 });
 
 //Get all posts by a user
-router.get("/user/:user_id", (req, res) => {
-  Post.findAll({
+router.get("/users/:user_id", (req, res) => {
+  Event.findAll({
     where: {
       user_id: req.params.user_id,
     },
@@ -75,14 +75,14 @@ router.get("/user/:user_id", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["name"],
       },
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ["name"],
         },
       },
     ],
@@ -102,7 +102,7 @@ router.get("/user/:user_id", (req, res) => {
 
 // Create a post
 router.post("/", withAuth, (req, res) => {
-  Post.create({
+  Event.create({
     title: req.body.title,
     location: req.body.location,
     date: req.body.date,
@@ -118,7 +118,7 @@ router.post("/", withAuth, (req, res) => {
 
 // Update a post
 router.put("/:id", withAuth, (req, res) => {
-  Post.update(
+  Event.update(
     {
       title: req.body.title,
       location: req.body.location,
@@ -146,7 +146,7 @@ router.put("/:id", withAuth, (req, res) => {
 
 // Delete a post
 router.delete("/:id", withAuth, (req, res) => {
-  Post.destroy({
+  Event.destroy({
     where: {
       id: req.params.id,
     },
