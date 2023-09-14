@@ -39,13 +39,28 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/event", async(req, res) => {
+router.get("/event/:id", async(req, res) =>{
+try {
+  const dbEventData = await Event.findByPk(req.params.id, {
+    include: [
+      {
+        model: User,
+        attributes: [
+          'id',
+          'name',
+          'email',
+          'password',
+        ],
+      },
+    ],
+  });
+}catch(err){
+  res.json(err)}
+const event = dbEventData.get({ plain: true });
+  res.render("event.handlebars", {layout: "dashboard"})
+});
   // find single Event by PK, inlude User
   // store in variable and pass to res.render after layout declaration
-
-  res.render("singleevent.handlebars", {layout: "dashboard"})
-})
-
 router.get("/edit/:id", withAuth, (req, res) => {
   Post.findOne({
     where: {
