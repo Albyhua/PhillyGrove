@@ -1,13 +1,14 @@
 <h2>Events:</h2>
 {{#each events as |event|}}
-<div>
   <div>
-    <h2>
-      <a href="/event/{{event.id}}">{{event.title}}</a>
-    </h2>
-    <p>
-      Created by {{event.user.name}}
-    </p>
+    <div>
+      <h2>
+        <a href="/event/{{event.id}}">{{event.title}}</a>
+      </h2>
+      <p>
+        Created by
+        {{event.user.name}}
+      </p>
+    </div>
   </div>
-</div>
 {{/each}}

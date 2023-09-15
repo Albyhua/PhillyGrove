@@ -1,16 +1,38 @@
 const router = require("express").Router();
-const { Post, User, Comment } = require("../../models");
+const { Event, User, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // Get all comments
-router.get("/", (req, res) => {
-  Comment.findAll({})
-    .then((dbCommentData) => res.json(dbCommentData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
+// router.get("/", (req, res) => {
+//   Comment.findAll({})
+//     .then((dbCommentData) => res.json(dbCommentData))
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
+
+router.get('/', async (req, res) => {
+  try {
+    const commentData = await Comment.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
     });
+
+     const comments = commentData.map((comment) => comment.get({ plain: true }));
+    
+     res.status(200).json(commentData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
+
+
 
 // Create a comment
 router.post("/", withAuth, (req, res) => {
