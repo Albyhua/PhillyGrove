@@ -1,0 +1,19 @@
+<section class="new-post-section">
+  <button type="submit" class="btn" id="create-new-post">+ Create New Event</button>
+</section>
+
+{{#if events.length}}
+  <section>
+    <h2>Your Dashboard</h2>
+    <ul class="post-list">
+      {{#each events as |event|}}
+        <li>
+          {{> event-info event}}
+          <a href="/dashboard/edit/{{event.id}}" class="edit-link">Edit Event</a>
+        </li>
+      {{/each}}
+    </ul>
+  </section>
+{{/if}}
+
+<script src="/js/create-post.js"></script>
