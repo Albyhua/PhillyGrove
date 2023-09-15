@@ -7,32 +7,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
-  {{!-- <link rel="stylesheet" href="/css/output.css"> --}}
+  {{!--
+  <link rel="stylesheet" href="/css/output.css"> --}}
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet" />
   <title>PhillyGrove</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
-  <div>
-    <header>
-      <h1>
-        <a href="/">PhillyGrove</a>
+<body class="bg-gray-100">
+  <div class="flex flex-col min-h-screen ">
+    <header class="bg-gradient-to-r from-green-500 to-blue-600 text-white p-6">
+      <h1 class="text-5xl font-semibold">
+        PhillyGrove
       </h1>
-      <nav>
+      <nav class=" static top-0 right-0">
         {{#if logged_in}}
         <a href="/userdasboard">Dashboard</a>
         <button id="logout">Logout</button>
         {{else}}
-        <a href="/login">Login</a>
-        <a href="/signup">Signup</a>
+        <button class="block rounded-md"><a href="/login">login</a></button>
         {{/if}}
       </nav>
     </header>
-    <main>
+    <main class="flex-grow container mx-auto">
       {{{ body }}}
     </main>
-    <footer>
 
+    <footer class="bg-gradient-to-r from-blue-600 to-green-500 text-white p-6 text-white p-6">
+      <div class="container mx-auto text-center">
+        &copy; 2023 PhillyGrove. All rights reserved.
+      </div>
     </footer>
   </div>
 
