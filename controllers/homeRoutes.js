@@ -21,9 +21,9 @@ router.get("/", async(req, res) => {
     // ],
   })
     .then((dbPostData) => {
-      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      const events = dbPostData.map((event) => event.get({ plain: true }));
       res.render("homepage", {
-        posts,
+        events,
         // loggedIn: req.session.loggedIn,
       });
     })
@@ -33,43 +33,68 @@ router.get("/", async(req, res) => {
     });
 });
 
-router.get("/event/:id", (req, res) => {
-  Post.findOne({
-    where: {
-      id: req.params.id,
-    },
-    attributes: ["id", "title", "location", "date", "description"],
-    include: [
-      {
-        model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
-        include: {
-          mode: User,
-          attributes: ["username"],
+
+router.get('/event/:id', async (req, res) => {
+  try {
+    const eventData = await Event.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
         },
-      },
-      {
-        model: User,
-        attributes: ["username"],
-      },
-    ],
-  })
-    .then((dbPostData) => {
-      if (!dbPostData) {
-        res.status(404).json({ message: "No event found with this id" });
-        return;
-      }
-      const post = dbPostData.get({ plain: true });
-      res.render("single-event", {
-        post,
-        loggedIn: req.session.loggedIn,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
+      ],
     });
+
+    const event = eventData.get({ plain: true });
+
+    res.render('event', {
+      ...event,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
+
+
+// router.get("/event/:id", (req, res) => {
+  // Event.findOne({
+  //   where: {
+  //     id: req.params.id,
+  //   },
+    // attributes: ["id", "title", "location", "date", "description"],
+    // include: [
+      // {
+    //     model: Comment,
+    //     attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+    //     include: {
+          // model: User,
+          // attributes: ["name"],
+        // },
+    //   },
+    //   {
+    //     model: User,
+    //     attributes: ["name"],
+    //   },
+    // ],
+//   // })
+//     .then((dbPostData) => {
+//       if (!dbPostData) {
+//         res.status(404).json({ message: "No event found with this id" });
+//         return;
+//       }
+//       const post = dbPostData.get({ plain: true });
+//       res.render("event", {
+//         post,
+//         loggedIn: req.session.loggedIn,
+//       });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {

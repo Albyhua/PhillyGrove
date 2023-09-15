@@ -5,6 +5,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/style.css">
+  {{!-- <link rel="stylesheet" href="/css/output.css"> --}}
   <title>PhillyGrove</title>
 </head>
 
@@ -15,8 +18,9 @@
         PhillyGrove
       </h1>
       <nav>
-        {{#if logged_in}}
+        <a href="/">Home</a>
         <a href="/dasboard">Dashboard</a>
+        {{#if logged_in}}
         <button id="logout">logout</button>
         {{else}}
         <a href="/login">login</a>

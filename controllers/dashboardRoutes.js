@@ -43,7 +43,7 @@ router.get("/event", async(req, res) => {
   // find single Event by PK, inlude User
   // store in variable and pass to res.render after layout declaration
 
-  res.render("singleevent.handlebars", {layout: "dashboard"})
+  res.render("event.handlebars", {layout: "dashboard"})
 })
 
 router.get("/edit/:id", withAuth, (req, res) => {
