@@ -6,29 +6,28 @@ const withAuth = require("../utils/auth");
 // localhost:3001/dashboard/
 router.get("/", (req, res) => {
   Event.findAll({
-    // where: {
-    //   user_id: req.session.user_id,
-    // },
-    // attributes: ["id", "title", "location", "date", "description"],
-    // include: [
-    //   {
-    //     model: Comment,
-    //     attributes: ["id", "comment_text", "event_id", "user_id", "created_at"],
-    //     include: {
-    //       model: User,
-    //       attributes: ["username"],
-    //     },
-    //   },
-    //   {
-    //     model: User,
-    //     attributes: ["username"],
-    //   },
-    // ],
+    where: {
+      user_id: req.session.user_id,
+    },
+    attributes: ["id", "title", "location", "date", "description"],
+    include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "event_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["name"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["name"],
+      },
+    ],
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
       res.render("userdashboard", {
-        layout: "dashboard",
         posts,
         loggedIn: true,
       });
@@ -39,13 +38,6 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/event", async(req, res) => {
-  // find single Event by PK, inlude User
-  // store in variable and pass to res.render after layout declaration
-
-  res.render("event.handlebars", {layout: "dashboard"})
-})
-
 router.get("/edit/:id", withAuth, (req, res) => {
   Post.findOne({
     where: {
@@ -55,15 +47,15 @@ router.get("/edit/:id", withAuth, (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ["name"],
         },
       },
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["name"],
       },
     ],
   })

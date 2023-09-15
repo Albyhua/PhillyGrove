@@ -9,21 +9,22 @@
   <link rel="stylesheet" href="/css/style.css">
   {{!-- <link rel="stylesheet" href="/css/output.css"> --}}
   <title>PhillyGrove</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
   <div>
     <header>
       <h1>
-        PhillyGrove
+        <a href="/">PhillyGrove</a>
       </h1>
       <nav>
-        <a href="/">Home</a>
-        <a href="/dasboard">Dashboard</a>
         {{#if logged_in}}
-        <button id="logout">logout</button>
+        <a href="/userdasboard">Dashboard</a>
+        <button id="logout">Logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login">Login</a>
+        <a href="/signup">Signup</a>
         {{/if}}
       </nav>
     </header>
