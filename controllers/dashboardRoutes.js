@@ -27,9 +27,9 @@ router.get("/", (req, res) => {
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
-      res.render("userdashboard", {
+      res.render("dashboard", {
         posts,
-        loggedIn: true,
+        logged_in: true,
       });
     })
     .catch((err) => {
@@ -67,7 +67,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
       const post = dbPostData.get({ plain: true });
       res.render("edit-post", {
         post,
-        loggedIn: true,
+        logged_in: true,
       });
     })
     .catch((err) => {
@@ -76,9 +76,9 @@ router.get("/edit/:id", withAuth, (req, res) => {
     });
 });
 
-router.get("/create/", withAuth, (req, res) => {
-  res.render("create-post", {
-    loggedIn: true,
+router.get("/new", withAuth, (req, res) => {
+  res.render("add-event", {
+    logged_in: true,
   });
 });
 
