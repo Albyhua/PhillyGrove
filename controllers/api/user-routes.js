@@ -55,13 +55,14 @@ router.get("/:id", (req, res) => {
 // Create a user
 router.post("/", (req, res) => {
   User.create({
-    username: req.body.username,
+    name: req.body.name,
+    email: req.body.email,
     password: req.body.password,
   })
     .then((dbUserData) => {
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
-        req.session.username = dbUserData.username;
+        req.session.name = dbUserData.name;
         req.session.loggedIn = true;
 
         res.json(dbUserData);
@@ -78,13 +79,13 @@ router.post("/login", async (req, res) => {
   try {
     const dbUserData = await User.findOne({
       where: {
-        username: req.body.username,
+        name: req.body.name,
       },
     });
     if (!dbUserData) {
       res
         .status(400)
-        .json({ message: "Incorrect username or password. Please try again!" });
+        .json({ message: "Incorrect name or password. Please try again!" });
       return;
     }
     const validPassword = await dbUserData.checkPassword(req.body.password);
@@ -96,7 +97,7 @@ router.post("/login", async (req, res) => {
     }
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.username;
+      req.session.name = dbUserData.name;
       req.session.loggedIn = true;
       res.json({ user: dbUserData, message: "You are now logged in!" });
     });
