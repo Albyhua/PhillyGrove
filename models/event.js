@@ -13,16 +13,16 @@ Event.init(
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: { len: [1] },
+      // allowNull: false,
+      // validate: { len: [1] },
     },
     location: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      // allowNull: false,
     },
     date_created: {
       type: DataTypes.DATE,
@@ -31,11 +31,11 @@ Event.init(
     },
     description: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
       references: {
         model: "user",
         key: "id",
@@ -44,6 +44,7 @@ Event.init(
   },
   {
     sequelize,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: "event",

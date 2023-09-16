@@ -2,6 +2,9 @@ async function loginFormHandler(event) {
   event.preventDefault();
 
   const email = document.querySelector("#email-login").value.trim();
+
+  console.log("email:", email)
+
   const password = document.querySelector("#password-login").value.trim();
 
   if (email && password) {
@@ -16,8 +19,11 @@ async function loginFormHandler(event) {
       },
     });
 
+    console.log("response:", response)
+
+
     if (response.ok) {
-      document.location.replace("/dashboard");
+      document.location.replace("/");
     } else {
       alert(response.statusText);
     }

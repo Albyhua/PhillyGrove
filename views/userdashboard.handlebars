@@ -1,0 +1,31 @@
+<div>
+  <h2>Hello, {{name}} </h2>
+</div>
+<div>
+  {{#if events.length}}
+  <div>
+    <h3>Your events:</h3>
+    {{#each events as |event|}}
+    <div>
+      <div>
+        <h4><a href="/event/{{event.id}}">{{event.title}}</a></h4>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+  <h3>Create new event:</h3>
+
+  <form class=" form create-new-post" id="create-new-post">
+    <div class="form-group">
+      <label for="event-title">Event name:</label>
+      <input class="form-input" type="text" id="event-title" name="event-title" />
+    </div>
+    <div>
+      <label for="event-desc">Description:</label>
+      <textarea class="form-input" type="text" id="event-desc" name="event-desc"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+  </form>
+</div>
+</div>

@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
 const { Event, User, Comment } = require("../models");
+const withAuth = require("../utils/auth");
 // base url localhost:3001/
 router.get("/", async (req, res) => {
   const dbPostData = await Event.findAll({
@@ -20,7 +21,8 @@ router.get("/", async (req, res) => {
           model: User,
           attributes: ["name"],
         },
-      },
+             },
+             { model: User}
     ],
   })
     .then((dbPostData) => {
@@ -47,6 +49,7 @@ router.get("/event/:id", async (req, res) => {
         {
           model: Comment,
         },
+        {model: Comment}
       ],
     });
 
@@ -119,4 +122,6 @@ router.get("*", (req, res) => {
   res.status(404).send("404 Error!");
 });
 
+
 module.exports = router;
+

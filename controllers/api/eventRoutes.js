@@ -101,20 +101,21 @@ router.get("/user/:user_id", (req, res) => {
 });
 
 // Create a post
-router.post("/", withAuth, (req, res) => {
-  Event.create({
-    title: req.body.title,
-    location: req.body.location,
-    date: req.body.date,
-    description: req.body.description,
-    user_id: req.session.user_id,
-  })
-    .then((dbPostData) => res.json(dbPostData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
+router.post('/', withAuth, async (req, res) => {
+  try {
+    const newEvent = await Event.create({
+      ...req.body,
+      user_id: req.session.user_id,
     });
+
+    res.status(200).json(newEvent);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
+
+
+
 
 // Update a post
 router.put("/:id", withAuth, (req, res) => {
