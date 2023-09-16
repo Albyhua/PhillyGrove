@@ -50,9 +50,9 @@ router.get('/', withAuth, async (req, res) => {
 //   })
 //     .then((eventData) => {
 //       const events = eventData.map((event) => event.get({ plain: true }));
-//       res.render("userdashboard", {
+//       res.render("dashboard", {
 //         events,
-//         loggedIn: true,
+//         logged_in: true,
 //       });
 //     })
 //     .catch((err) => {
@@ -87,10 +87,10 @@ router.get("/edit/:id", withAuth, (req, res) => {
         res.status(404).json({ message: "No post found with this id" });
         return;
       }
-      const event = eventData.get({ plain: true });
-      res.render("edit-event", {
-        event,
-        loggedIn: true,
+      const post = dbPostData.get({ plain: true });
+      res.render("edit-post", {
+        post,
+        logged_in: true,
       });
     })
     .catch((err) => {
@@ -99,9 +99,9 @@ router.get("/edit/:id", withAuth, (req, res) => {
     });
 });
 
-router.get("/create/", withAuth, (req, res) => {
-  res.render("create-event", {
-    loggedIn: true,
+router.get("/new", withAuth, (req, res) => {
+  res.render("add-event", {
+    logged_in: true,
   });
 });
 

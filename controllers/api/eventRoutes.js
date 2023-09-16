@@ -4,7 +4,7 @@ const withAuth = require("../../utils/auth");
 
 // Get all posts
 router.get("/", (req, res) => {
-  Event.findAll({
+  Post.findAll({
     attributes: ["id", "title", "location", "date", "description"],
     order: [["date", "DESC"]],
     include: [
@@ -65,8 +65,8 @@ router.get("/:id", (req, res) => {
 });
 
 //Get all posts by a user
-router.get("/users/:user_id", (req, res) => {
-  Event.findAll({
+router.get("/user/:user_id", (req, res) => {
+  Post.findAll({
     where: {
       user_id: req.params.user_id,
     },
