@@ -1,8 +1,8 @@
 <div>
   <div>
-    <h2 class="text-2xl font-semibold">{{event.title}}</h2>
+    <h2 class="text-2xl font-semibold">{{title}}</h2>
     <p class="text-md">Event posted by {{user.name}} </p>
-    <p class="text-md text-green-500">Date of Event: {{date_created}}</p>
+    <p class="text-sm text-green-500">Date of Event: {{date_created}}</p>
     <div class="mt-4">
     <p class="font-semibold" >{{description}}</p>
     </div>
@@ -11,7 +11,7 @@
     <h3 class="font-semibold" >Comments:</h3>
     {{> comments comments }}
   </div class="mb-1 mt-4" >
-  <h3 class="font-semibold mb-1 mt-4">Create a comment:</h3>
+  <h3 class="font-semibold mb-0 mt-4">Create a comment:</h3>
   <form class="comment-form">
     <div>
       <label class="text-sm font-semibold">Comment text:</label>
