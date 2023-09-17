@@ -1,14 +1,17 @@
-<h2>Events:</h2>
+<h2 class="font-semibold">Events:</h2>
 {{#each events as |event|}}
   <div>
-    <div>
+    <div class="bg-blue-100 rounded overflow-hidden shadow-md block m-4 grid grid-cols-3">
       <h2>
         <a class="event" href="/event/{{event.id}}">{{event.title}}</a>
       </h2>
-      <p class="userName">
+      <p class="userName text-blue-700">
         Created by
         {{event.user.name}}
       </p>
+      <div class="bg-brown-100 rounded">
+        <span class="text-xs"> {{event.date}}</span>
+      </div>
     </div>
   </div>
 {{/each}}
