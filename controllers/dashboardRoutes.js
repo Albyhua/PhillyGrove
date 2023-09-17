@@ -12,11 +12,8 @@ router.get("/", withAuth, async (req, res) => {
       include: [{ model: Event }],
     });
 
-    
-    
-    console.log("userData:", userData)
+    console.log("userData:", userData);
     const user = userData.get({ plain: true });
- 
 
     res.render("dashboard", {
       ...user,

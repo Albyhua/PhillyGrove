@@ -40,14 +40,14 @@ const seedData = async () => {
         location: "1101 Walnut St, Philadelphia Pa 19107",
         description:
           "Join us at Brendan's Garage Sale and find yourself some new tech gadgets!",
-        date: 2020 - 9 - 18,
+        date: 2020-9-18,
         userId: users[2].id,
       },
       {
         title: "PARTY!",
         location: "1113 Market St, Philadelphia Pa 19107",
         description: "Spend time with friends in good place!",
-        date: 2020 - 9 - 18,
+        date: 2020-9-18,
         userId: users[3].id,
       },
       {

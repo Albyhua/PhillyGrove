@@ -1,5 +1,9 @@
 <section class="new-post-section">
-  <button type="submit" class="btn" id="new-event-form">+ Create New Event</button>
+  <button
+    type="submit"
+    class="btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+    id="new-event-form"
+  >+ Create New Event</button>
 </section>
 
 {{#if events.length}}
@@ -8,12 +12,8 @@
     <ul>
       {{#each events as |event|}}
         <li>
-          <a class="text-red-500" href="/event/{{event.id}}">{{event.title}}</a>
-          <div>
+          <a href="/event/{{event.id}}">{{event.title}}</a>
           <a href="/dashboard/edit/{{event.id}}" class="edit-link">Edit Event</a>
-          </div>
-          <button type="submit">Update post</button>
-          <button type="button" class="delete-post-btn">Delete post</button>
         </li>
       {{/each}}
     </ul>
@@ -21,7 +21,3 @@
 {{/if}}
 
 <script src="/js/create-post.js"></script>
-{{#if loggedIn}}
-  <script src="/js/edit-post.js"></script>
-  <script src="/js/delete-post.js"></script>
-{{/if}}
