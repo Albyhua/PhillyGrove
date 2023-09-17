@@ -1,0 +1,33 @@
+<div class="px-px">
+  <h2 class=" text-gray-700 text-2xl font-semibold border-b border-gray-200">Hello, {{name}} </h2>
+</div>
+<div class="flex justify-center">
+  {{#if events.length}}
+  <div class="mt-8 bg-gray rounded overflow-hidden ">
+    <h3 >Your events:</h3>
+    {{#each events as |event|}}
+    <div>
+      <div>
+        <h4><a href="/event/{{event.id}}">{{event.title}}</a></h4>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+  <div>
+  <h3 class="text-gray-700 text-2xl border-b border-gray-200">Create new event:</h3>
+  </div>
+ 
+  <form class=" form create-new-post border-b" id="create-new-post">
+    <div class="form-group mt-2 rounded overflow-hidden">
+      <label class="text-blue-700 text-1xl mt-12" for="event-title">Event name:</label>
+      <input class="form-input text-gray-700" type="text" id="event-title" name="event-title" />
+    </div>
+    <div>
+      <label class="text-blue-700 text-1xl" for="event-desc">Description:</label>
+      <textarea class="form-input" type="text" id="event-desc" name="event-desc"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+  </form>
+</div>
+</div>

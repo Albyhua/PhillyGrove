@@ -1,6 +1,6 @@
 const User = require("./User");
 const Event = require("./Event");
-const Comment = require("./Comment");
+const Comment = require("./comment");
 
 User.hasMany(Event);
 Event.belongsTo(User);

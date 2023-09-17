@@ -1,6 +1,6 @@
 async function newFormHandler(event) {
   event.preventDefault();
-
+console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
   const title = document.querySelector('input[name="event-title"]').value;
   const location = document.querySelector('input[name="event-location"]').value;
   const date = document.querySelector('input[name="event-date"]').value;
