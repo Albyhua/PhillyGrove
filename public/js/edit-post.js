@@ -2,10 +2,12 @@ async function editFormHandler(event) {
   event.preventDefault();
 
   const title = document.querySelector('input[name="event-title"]').value;
-  const post_content = document
+  const location = document.querySelector('input[name="event-location"]').value;
+  const date = document.querySelector('input[name="event-date"]').value;
+  const description = document
     .querySelector('textarea[name="event-description"]')
     .value.trim();
-  const post_id = window.location.toString().split("/")[
+  const event_id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
 
@@ -13,7 +15,9 @@ async function editFormHandler(event) {
     method: "PUT",
     body: JSON.stringify({
       title,
-      post_content,
+      location,
+      date,
+      description,
     }),
     headers: {
       "Content-Type": "application/json",

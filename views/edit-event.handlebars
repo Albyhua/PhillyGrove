@@ -1,21 +1,55 @@
-<a href="/userdashboard" class="go-back"> &larr; Back to Dashboard</a>
+<a href="/dashboard" class="go-back"> &larr; Back to Dashboard</a>
 
-<div class="row justify-space-between-md">
-  <div class="edit-card">
-    <h2 class="page-title">edit-post</h2>
-    <form class="edit post-form">
-      <div class="edit-title">
-        <label for="edit-title">Title:</label>
-        <input type="text" name="edit-title" id="edit-title" />
-      </div>
-      <div class="edit-content">
-        <label for="edit-content">Description:</label>
-        <input class="entry-field" name="edit-content" id="edit-content" />
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn">Login</button>
-      </div>
-    </form>
-  </div>
+<article class="new-page">
+  <section class="edit-form-page">
+    <div class="form-heading">
+      <h2>
+        Edit Post
+      </h2>
+    </div>
+    <div class="form-section">
+      <form class="edit-post-form">
+        <div class="event-title-section">
+          <label for="event-title">Title</label>
+          <input
+            type="text"
+            name="event-title"
+            id="event-title"
+            value="{{event.title}}"
+          />
+        </div>
+        <div class="event-location">
+          <label for="event-location">Location</label>
+          <input
+            type="text"
+            id="event-location"
+            name="event-location"
+          >{{event.location}}</input>
+        </div>
+        <div class="event-date">
+          <label for="event-date">Date</label>
+          <input
+            type="date"
+            id="event-date"
+            name="event-date"
+          >{{event.date}}</input>
+        </div>
+        <div class="event-description">
+          <label for="event-description">Description</label>
+          <textarea
+            class="entry-field"
+            id="event-description"
+            name="event-description"
+          >{{event.description}}</textarea>
+        </div>
+        <button type="submit">Update post</button>
+        <button type="button" class="delete-post-btn">Delete post</button>
+      </form>
+    </div>
+  </section>
+</article>
 
-<script src="/js/edit-post.js"></script>
+{{#if loggedIn}}
+  <script src="/js/edit-post.js"></script>
+  <script src="/js/delete-post.js"></script>
+{{/if}}

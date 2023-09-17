@@ -5,27 +5,23 @@ const withAuth = require("../utils/auth");
 
 // localhost:3001/dashboard/
 
-
-router.get('/', withAuth, async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
+      attributes: { exclude: ["password"] },
       include: [{ model: Event }],
     });
 
     const user = userData.get({ plain: true });
 
-    res.render('userdashboard', {
+    res.render("dashboard", {
       ...user,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
-
-
 
 // router.get("/", withAuth, async (req, res) => {
 //   Event.findAll({
