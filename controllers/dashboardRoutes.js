@@ -65,7 +65,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
         return;
       }
       const post = dbPostData.get({ plain: true });
-      res.render("edit-post", {
+      res.render("edit-event", {
         post,
         logged_in: true,
       });
