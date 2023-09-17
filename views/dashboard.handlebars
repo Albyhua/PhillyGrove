@@ -1,5 +1,5 @@
 <section class="new-post-section">
-  <button type="submit" class="btn" id="create-new-post">+ Create New Event</button>
+  <button type="submit" class="btn" id="new-event-form">+ Create New Event</button>
 </section>
 
 {{#if events.length}}
@@ -8,7 +8,7 @@
     <ul class="event-list">
       {{#each events as |event|}}
         <li>
-          {{> event-info event}}
+          <a href="/event/{{event.id}}">{{event.title}}</a>
           <a href="/dashboard/edit/{{event.id}}" class="edit-link">Edit Event</a>
         </li>
       {{/each}}
