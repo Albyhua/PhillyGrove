@@ -1,20 +1,20 @@
 <div>
   <div>
-    <h2 class="text-2xl">{{event.title}}</h2>
-    <p class="text-1xl">Event posted by {{user.name}} </p>
-    <p class="text-xl text-green-500">Date of Event: {{date_created}}</p>
-    <div>
-    <p>{{description}}</p>
+    <h2 class="text-2xl font-semibold">{{event.title}}</h2>
+    <p class="text-md">Event posted by {{user.name}} </p>
+    <p class="text-md text-green-500">Date of Event: {{date_created}}</p>
+    <div class="mt-4">
+    <p class="font-semibold" >{{description}}</p>
     </div>
   </div>
-  <div class="border-2 border-blue-400 py-2 mt-4">
-    <h3>Comments:</h3>
+  <div class="border-2 border-blue-200 py-2 mt-4">
+    <h3 class="font-semibold" >Comments:</h3>
     {{> comments comments }}
-  </div>
-  <h3>Create a comment:</h3>
+  </div class="mb-1 mt-4" >
+  <h3 class="font-semibold mb-1 mt-4">Create a comment:</h3>
   <form class="comment-form">
     <div>
-      <label class="text-sm">Comment text:</label>
+      <label class="text-sm font-semibold">Comment text:</label>
       <input id="comment-name" name="comment-name" />
     </div>
     <div>
