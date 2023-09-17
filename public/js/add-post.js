@@ -2,7 +2,9 @@ async function newFormHandler(event) {
   event.preventDefault();
 
   const title = document.querySelector('input[name="event-title"]').value;
-  const event_description = document
+  const location = document.querySelector('input[name="event-location"]').value;
+  const date = document.querySelector('input[name="event-date"]').value;
+  const description = document
     .querySelector('textarea[name="event-description"]')
     .value.trim();
 
@@ -12,7 +14,7 @@ async function newFormHandler(event) {
       title,
       location,
       date,
-      event_description,
+      description,
     }),
     headers: {
       "Content-Type": "application/json",
@@ -27,5 +29,5 @@ async function newFormHandler(event) {
 }
 
 document
-  .querySelector(".new-post-form")
+  .querySelector(".new-event-form")
   .addEventListener("submit", newFormHandler);
