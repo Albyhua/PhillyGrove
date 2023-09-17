@@ -2,13 +2,25 @@ const User = require("./User");
 const Event = require("./Event");
 const Comment = require("./comment");
 
-User.hasMany(Event);
-Event.belongsTo(User);
+User.hasMany(Event, {
+  foreignKey: "user_id",
+});
+Event.belongsTo(User, {
+  foreignKey: "user_id",
+});
 
-User.hasMany(Comment);
-Comment.belongsTo(User);
+User.hasMany(Comment, {
+  foreignKey: "user_id",
+});
+Comment.belongsTo(User, {
+  foreignKey: "user_id",
+});
 
-Event.hasMany(Comment);
-Comment.belongsTo(Event);
+Event.hasMany(Comment, {
+  foreignKey: "event_id",
+});
+Comment.belongsTo(Event, {
+  foreignKey: "event_id",
+});
 
 module.exports = { User, Event, Comment };
