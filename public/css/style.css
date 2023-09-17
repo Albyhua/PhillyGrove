@@ -219,7 +219,7 @@ main {
 
 .no-button:hover {
   color: var(--secondary-bg-color);
-  background-color: var(--third-bg-color);
+  background-color: var(--main-bg-color);
   text-decoration: underline;
 }
 
