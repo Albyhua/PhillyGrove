@@ -8,8 +8,10 @@
     <ul>
       {{#each events as |event|}}
         <li>
-          <a href="/event/{{event.id}}">{{event.title}}</a>
+          <a class="text-red-500" href="/event/{{event.id}}">{{event.title}}</a>
+          <div>
           <a href="/dashboard/edit/{{event.id}}" class="edit-link">Edit Event</a>
+          </div>
           <button type="submit">Update post</button>
           <button type="button" class="delete-post-btn">Delete post</button>
         </li>
