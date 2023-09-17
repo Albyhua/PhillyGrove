@@ -101,7 +101,7 @@ router.get("/user/:user_id", (req, res) => {
 });
 
 // Create a post
-router.post('/', withAuth, async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
     const newEvent = await Event.create({
       ...req.body,
@@ -113,9 +113,6 @@ router.post('/', withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
-
-
-
 
 // Update a post
 router.put("/:id", withAuth, (req, res) => {

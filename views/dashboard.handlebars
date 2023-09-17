@@ -5,11 +5,13 @@
 {{#if events.length}}
   <section>
     <h2>Your Dashboard</h2>
-    <ul class="event-list">
+    <ul>
       {{#each events as |event|}}
         <li>
           <a href="/event/{{event.id}}">{{event.title}}</a>
           <a href="/dashboard/edit/{{event.id}}" class="edit-link">Edit Event</a>
+          <button type="submit">Update post</button>
+          <button type="button" class="delete-post-btn">Delete post</button>
         </li>
       {{/each}}
     </ul>
@@ -17,3 +19,7 @@
 {{/if}}
 
 <script src="/js/create-post.js"></script>
+{{#if loggedIn}}
+  <script src="/js/edit-post.js"></script>
+  <script src="/js/delete-post.js"></script>
+{{/if}}
