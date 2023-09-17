@@ -1,21 +1,15 @@
 <div>
   <div>
     <h2 class="text-2xl">{{event.title}}</h2>
-    <p class="text-1xl">Event posted by {{user.name}} </p>
+    <p class="text-1xl">Event posted by {{user.name}}</p>
     <p class="text-xl text-green-500">Date of Event: {{date_created}}</p>
     <div>
-    <p>{{description}}</p>
+      <p>{{description}}</p>
     </div>
   </div>
   <div class="border-2 border-blue-400 py-2 mt-4">
-  <h3>Comments:</h3>
-  {{#each comments as |comment|}}
-  <div>
-    <p>{{user.name}}:</p>
-    <p>{{comment_text}}</p>
-    <p>{{formatDate created_at}}</p>
-  </div>
-  {{/each}}
+    <h3>Comments:</h3>
+    {{> comments comments }}
   </div>
   <h3>Create a comment:</h3>
   <form class="comment-form">
