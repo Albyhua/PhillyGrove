@@ -23,39 +23,39 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
-// router.get("/", withAuth, async (req, res) => {
-//   Event.findAll({
-//     where: {
-//       user_id: req.session.user_id,
-//     },
-//     attributes: ["id", "title", "location", "date", "description"],
-//     include: [
-//       {
-//         model: Comment,
-//         attributes: ["id", "comment_text", "event_id", "user_id", "created_at"],
-//         include: {
-//           model: User,
-//           attributes: ["name"],
-//         },
-//       },
-//       {
-//         model: User,
-//         attributes: ["name"],
-//       },
-//     ],
-//   })
-//     .then((eventData) => {
-//       const events = eventData.map((event) => event.get({ plain: true }));
-//       res.render("dashboard", {
-//         events,
-//         logged_in: true,
-//       });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
+router.get("/", withAuth, async (req, res) => {
+  Event.findAll({
+    where: {
+      user_id: req.session.user_id,
+    },
+    attributes: ["id", "title", "location", "date", "description"],
+    include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "event_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["name"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["name"],
+      },
+    ],
+  })
+    .then((dbPostData) => {
+      const events = dbPostData.map((event) => event.get({ plain: true }));
+      res.render("dashboard", {
+        events,
+        logged_in: true,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 router.get("/edit/:id", withAuth, (req, res) => {
   Event.findOne({
@@ -78,12 +78,12 @@ router.get("/edit/:id", withAuth, (req, res) => {
       },
     ],
   })
-    .then((eventData) => {
-      if (!eventData) {
+    .then((dbPostData) => {
+      if (!dbPostData) {
         res.status(404).json({ message: "No post found with this id" });
         return;
       }
-      const post = eventData.get({ plain: true });
+      const post = dbPostData.get({ plain: true });
       res.render("edit-event", {
         post,
         logged_in: true,

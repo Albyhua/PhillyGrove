@@ -13,8 +13,8 @@
           <label for="event-title">Title</label>
           <input
             type="text"
-            name="event-title"
             id="event-title"
+            name="event-title"
             value="{{event.title}}"
           />
         </div>
@@ -24,7 +24,8 @@
             type="text"
             id="event-location"
             name="event-location"
-          >{{event.location}}</input>
+            value="{{event.location}}"
+          />
         </div>
         <div class="event-date">
           <label for="event-date">Date</label>
@@ -32,7 +33,8 @@
             type="date"
             id="event-date"
             name="event-date"
-          >{{event.date}}</input>
+            value="{{event.date}}"
+          />
         </div>
         <div class="event-description">
           <label for="event-description">Description</label>
@@ -49,7 +51,7 @@
   </section>
 </article>
 
-{{#if loggedIn}}
+{{#if logged_in}}
   <script src="/js/edit-post.js"></script>
   <script src="/js/delete-post.js"></script>
 {{/if}}
