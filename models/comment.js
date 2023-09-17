@@ -20,10 +20,15 @@ Comment.init(
       defaultValue: DataTypes.NOW,
       allowNull: false,
     },
+
     user_id: {
+      type: DataTypes.INTEGER
+    },
+
+    event_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "user",
+        model: "event",
         key: "id",
       },
     },

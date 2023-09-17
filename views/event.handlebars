@@ -11,13 +11,14 @@
   <h3>Comments:</h3>
   {{#each comments as |comment|}}
   <div>
-    <p>{{user.name}}</p>
+    <p>{{user.name}}:</p>
     <p>{{comment_text}}</p>
+    <p>{{formatDate created_at}}</p>
   </div>
   {{/each}}
   </div>
   <h3>Create a comment:</h3>
-  <form>
+  <form class="comment-form">
     <div>
       <label>Comment text:</label>
       <input id="comment-name" name="comment-name" />
@@ -27,3 +28,4 @@
     </div>
   </form>
 </div>
+<script src="/js/comment.js"></script>
