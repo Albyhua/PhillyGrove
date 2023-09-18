@@ -46,7 +46,13 @@ a {
   transition: color 0.1s;
 }
 
+a:hover {
+  text-decoration: none; 
+}
+
+
 button {
+  text-decoration: none;
   background-color: #225ca3;
   border: 0;
   padding: 1%;
@@ -127,6 +133,7 @@ header,
 .edit-form-page {
   border: 3px solid black;
   padding-bottom: 10px;
+  border-radius: 5px;
 }
 
 .form-heading {
