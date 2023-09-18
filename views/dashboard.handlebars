@@ -1,23 +1,23 @@
 <section class="new-post-section">
-  <button
-    type="submit"
-    class="btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-    id="new-event-form"
-  >+ Create New Event</button>
+  <button type="submit" class="btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+    id="new-event-form">+ Create New Event</button>
 </section>
 
 {{#if events.length}}
-  <section>
-    <h2>Your Dashboard</h2>
-    <ul>
-      {{#each events as |event|}}
-        <li>
-          <a href="/event/{{event.id}}">{{event.title}}</a>
-          <a href="/dashboard/edit/{{event.id}}" class="edit-link">Edit Event</a>
-        </li>
-      {{/each}}
-    </ul>
-  </section>
+<section class="py-8 px-4">
+  <h2 class="text-3xl font-bold mb-8">Your Dashboard</h2>
+  <ul>
+    {{#each events as |event|}}
+    <li class="mb-8 bg-white shadow-lg rounded-lg overflow-hidden">
+      <div class="px-6 py-4 bg-gray-100">
+        <div class="font-bold text-xl mb-2">Event Title:</div>
+        <a href="/event/{{event.id}}" class="text-blue-500 hover:no-underline text-2xl mb-4 block">{{event.title}}</a>
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+</section>
+
 {{/if}}
 
 <script src="/js/create-post.js"></script>
