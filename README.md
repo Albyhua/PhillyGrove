@@ -2,68 +2,24 @@
 
 ## Description
 
- PhillyGrove is an application that serves as a community bulletin board for the inhabitants of Philadelphia! On PhillyGrove, one can view a list of upcoming events in their area, a brief description of what can be expected, the date of the event, as well as user comments. If someone in the Philadelphia area is interested in posting a community event, be it a garage sale or charity walk, all one needs to do is create a free account with the sign up button. Once an account is created, a user can create as many events as they so please, and will have access to a userdashboard that contains a history of all of their past events.  
+ PhillyGrove is an application that serves as a community bulletin board for the inhabitants of Philadelphia! On PhillyGrove, one can view a list of upcoming events in their area, a brief description of what can be expected, the date of the event, as well as user comments. If someone in the Philadelphia area is interested in posting a community event, be it a garage sale or charity event, all one needs to do is create a free account with the sign up button. Once an account is created, a user can create as many events as they so please, and will have access to a userdashboard that contains a history of all of their past events.  
  
 Whereas the currently fashionable social media platforms provide an online community, they often become over-saturated and politicized, which distracts its users as opposed to aiding them in their endeavors.  PhillyGrove is a potential re-centering of what social media can do, which is provide a space for communities to advertise online and come to fruition in the real world-a bulletin board for your city that gets down to business.
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
-
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+If one is interested in getting the development enviorenmet running one must first souce our mysql database by signing into one's individual mysql account in the command line. Then one must enter source schema.sql. After this is done, one can then enter run seed into the command line to fill the databse. Then one simply must enter npm start to get application up and running. 
 
 ## Usage
-
-Provide instructions and examples for use. Include screenshots as needed.
-
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
-
-![alt text](assets/images/screenshot.png)
+One can view and interact with PhillyGrove on their web browser at: 
+![PhillyGrove screenshot](./assets/images/Screenshot%202023-09-18%20154531.png)
 
 ## Credits
+Contributors:
+   - Albert Hua, Github link: https://github.com/Albyhua
+   - Angela Figueroa, Github link: https://github.com/AngelaFig
+   - Brendan Lam, Github Link: https://github.com/BLam1226
+   - Dimitry Rogovoy, Github Link: https://github.com/Unk171
+   - Antonio DeLeo, Github Link: https://github.com/TonyDeleo98 
 
-List your collaborators, if any, with links to their GitHub profiles.
-
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well.
-
-## License
-
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
-
----
-
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-## Badges
-
-![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-
-Badges aren't necessary, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-
-## Features
-
-If your project has a lot of features, list them here.
-
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute to it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-
-## Tests
-
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
