@@ -12,7 +12,7 @@ Whereas the currently fashionable social media platforms provide an online commu
 If one is interested in getting the development enviorenmet running one must first souce our mysql database by signing into one's individual mysql account in the command line. Then one must enter source schema.sql. After this is done, one can then enter run seed into the command line to fill the databse. Then one simply must enter npm start to get application up and running. 
 
 ## Usage
-One can view and interact with PhillyGrove on their web browser at: 
+One can view and interact with PhillyGrove on their web browser at: https://philly-grove-213220-3419636a6539.herokuapp.com/ 
 ![PhillyGrove screenshot](./assets/images/Screenshot%202023-09-18%20154531.png)
 
 ## Credits
