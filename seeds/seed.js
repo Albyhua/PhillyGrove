@@ -41,14 +41,14 @@ const seedData = async () => {
         description:
           "Join us at Brendan's Garage Sale and find yourself some new tech gadgets!",
         date: "2020-9-18",
-        userId: users[2].id,
+        user_id: users[1].id,
       },
       {
         title: "PARTY!",
         location: "1113 Market St, Philadelphia Pa 19107",
         description: "Spend time with friends in good place!",
         date: "2020-9-18",
-        userId: users[3].id,
+        user_id: users[2].id,
       },
       {
         title: "Anarchist Reading Group",
@@ -77,6 +77,20 @@ const seedData = async () => {
         date: "2023-10-21",
         description:"Come taste some delicious white, red, and bubbly wines at Tria and help our business decide what is next to join our drink menu!",
         user_id:users[1].id,
+      },
+      {
+        title:"Baking Class",
+        location:"339 S 13th St, Philadelphia, PA 19107",
+        date:"2023-9-23",
+        description:"If you enjoy baking, join us at Sweet Box Bakery at 3:00pm and learn how to bake our famous sea salt chocolate chip cookies!",
+        user_id:users[1].id
+      },
+      {
+        title: "Free Women's Jiu Jitsu Self Defense Class",
+        location:"1231 Bainbridge St, Philadelphia, PA 19147",
+        date:"2023-9-30",
+        description:"Attention all women! Stop by the Gracie Academy Philadelphia and learn a few reliable jiu jitsu techniques so you can feel confident in your ability to protect yourselves.",
+        user_id:users[0].id
       }
     ]);
     await Comment.bulkCreate([
