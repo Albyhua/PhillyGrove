@@ -1,10 +1,9 @@
 {{#each this}}
-<section class="comment">
-  <div class="meta">
-    {{user.name}}
-    {{formatDate created_at}}
+<section class="comment flex flex-col mb-4">
+  <div class="meta text-sm mb-2">
+    {{user.name}} - {{formatDate created_at}}
   </div>
-  <div class="text">
+  <div class="text bubble p-4 max-w-lg">
     {{comment_text}}
   </div>
 </section>
